@@ -7,7 +7,8 @@ My Enviornment:
 Set yourself up for success:
 - Download Vagrant: https://www.vagrantup.com/
 - Download VirtualBox: https://www.virtualbox.org/
-- Install Homebrew through your terminal: https://brew.sh/ (I DONT THINK THIS IS NEEDED)
+- Signup for a Datadog account: https://www.datadoghq.com/ (There is a free two week trial) 
+
 
 Create a directory to work in
 
@@ -20,32 +21,35 @@ cd into that directory
 Start up vagrant
 
 	$ vagrant init ubuntu/trusty64	
-- This will create your Vagrantfile
+This will create your Vagrantfile
     - More info on ubuntu/trusty64: https://app.vagrantup.com/ubuntu/boxes/trusty64
     
 In your text editor, [HOSTNAME]/Vagrantfile:
-(Copy & Paste this code)
 
-	Vagrant.configure("2") do |config|
-	 config.vm.box = "ubuntu/trusty64"
-	 config.vm.provider "virtualbox" do |vb|
-	   vb.memory = 2048
-	   vb.cpus = 4
-	 end
-	  
-	 config.vm.network "private_network", ip: "192.168.33.10"
-	 
-	 config.vm.synced_folder ".", "/var/www/html", :nfs => { :mount_options => ["dmode=777", "fmode=666"] }
-	 
-	 config.vm.provision "shell", path: "bootstrap.sh"
+		#COPY AND PASTE THIS CODE INTO YOUR FILE
+		
+		Vagrant.configure("2") do |config|
+		 config.vm.box = "ubuntu/trusty64"
+		 config.vm.provider "virtualbox" do |vb|
+		   vb.memory = 2048
+		   vb.cpus = 4
+		 end
 
-	 end
+		 config.vm.network "private_network", ip: "192.168.33.10"
+
+		 config.vm.synced_folder ".", "/var/www/html", :nfs => { :mount_options => ["dmode=777", "fmode=666"] }
+
+		 config.vm.provision "shell", path: "bootstrap.sh"
+
+		 end
+*Feel free to setup you Vagrantfile however you please*
+
 - Save the file
 
 Create a new file in your directory: [HOSTNAME]/bootstrap.sh
-(Copy & Paste this code)
 
-
+	#COPY AND PASTE THIS CODE INTO YOUR FILE
+	
 	apt-get update
 	apt-get upgrade
 	apt-get install -y git
@@ -59,8 +63,6 @@ Create a new file in your directory: [HOSTNAME]/bootstrap.sh
 	apt-get install -y php7.2-common
 	apt-get install -y php7.2-mcrypt
 	apt-get install -y php7.2-zip
-	debconf-set-selections <<< 'mysql-server mysql-server/root_password password root'
-	debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password root'
 	apt-get install -y mysql-server
 	apt-get install -y php7.2-mysql
 	sudo service apache2 restart
@@ -81,32 +83,49 @@ Back to the terminal:
 
      	$ vagrant ssh
 
+Finally it's time!
 
-Install Datadog Agent
-*Add Photo
+- Install Datadog Agent
+
+*Copy & Paste the DD_API_KEY*
+![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/Datadog_Ubuntu_Install.png)
 
 
 
 
-*Adding tags. 
+
+Adding tags.  
+In Your Terminal:
 
 	$ cd /etc/datadog-agent
+	$ sudo nano datadog-agent.yaml
 
-	*Add PHOTO
+![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/sudo_nano_datadog.png)
+
+Once you're in the file, scroll down to tags. 
+*Remember to remove the #.*
+(See photo below for example)
+![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/Datadog_workingTags.png)
+
+- When the tags are in place, exit, then restart the Datadog agent
+	
+		$ sudo service datadog-agent restart
 	
 Zookeeper Metrics
 
 Since the project runs a basic Apache server let's integrate Apache Zookeeper into the project. 
 
-	
+![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/Zookeeper_Integration.png)
 
-*Add github photo of apache zookeeper
 
-	cd into /etc/datadog-agent/conf.d/zk.d
-	sudo nano zk.yaml
+	$ cd into /etc/datadog-agent/conf.d/zk.d
+	$ sudo nano zk.yaml
 	
 	
-* Add terminal file
+![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/Zookeeper_Configuration_Terminal.png)
+
+- Once the Zookeeper setup is complete, restart the Datadog agent
 	
+		$ sudo service datadog-agent restart
 
 
