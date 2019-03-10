@@ -4,6 +4,8 @@ My Enviornment:
 - OS: Ubuntu 16.04
 - VM: Vagrant w/ VirtualBox
 
+Ubuntu Setup with Agent
+-----------------------
 1. Set yourself up for success:
 - Download Vagrant: https://www.vagrantup.com/
 - Download VirtualBox: https://www.virtualbox.org/
@@ -21,7 +23,7 @@ My Enviornment:
 4. Start up vagrant
 
 		$ vagrant init ubuntu/trusty64	
-This will create your Vagrantfile
+  This will create your Vagrantfile
     - More info on ubuntu/trusty64: https://app.vagrantup.com/ubuntu/boxes/trusty64
     
 5. In your text editor, [HOSTNAME]/Vagrantfile:
@@ -45,9 +47,9 @@ This will create your Vagrantfile
 			 
 	*Feel free to setup your Vagrantfile however you please*
 
- 	6. Save the file
+ 6. Save the file
 
-	7. Create a new file in your directory: [HOSTNAME]/bootstrap.sh
+ 7. Create a new file in your directory: [HOSTNAME]/bootstrap.sh
 
 		#COPY AND PASTE THIS CODE INTO YOUR FILE
 		
@@ -91,16 +93,19 @@ Back to the terminal:
 
 
 
-<p align="center">
-<h3>Finally it's time! </h3>
-</p>
-
 
 Installing Datadog Agent
+------------------------
+
+<p align="center">
+<h4>Finally it's time! </h4>
+</p>
 
 ![](https://i.imgur.com/KLxQESW.gif)
 
-1. Copy & Paste the DD_API_KEY into your terminal
+
+- Copy & Paste the DD_API_KEY into your terminal
+
 
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/Datadog_Ubuntu_Install.png)
 
@@ -114,28 +119,44 @@ Installing Datadog Agent
 
 <br />
 
-<h2>Adding tags</h2>  
+<h2>Adding tags</h2> 
+<a href="https://docs.datadoghq.com/tagging/#defining-tags">Information on Datadog Tags</a>
+
 In Your Terminal:
 
+1. cd into the appropriate file
+
 		$ cd /etc/datadog-agent
+		
+2. Edit datadog-agent.yaml using nano
+
 		$ sudo nano datadog-agent.yaml
 
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/sudo_nano_datadog.png)
 
-- Once you're in the file, scroll down to tags. 
+3. Once you're in the file, scroll down to tags.
 
-- *Remember to remove the "#"*
+	- *Remember to remove the "#"*
 
 (See photo below for example)
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/Datadog_workingTags.png)
 
-- When the tags are in place, exit, then restart the Datadog agent
+4. Add desired tags
+
+5. When the tags are in place, exit. 
+
+6. Restart the Datadog agent
 	
 		$ sudo service datadog-agent restart
 		
-![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/9c73283a27966899fd81ab8d36dbc8c1cbfa3bc2/pictures/Datadog_showTags.png)
+7. In the Datadog UI > Infrastructure > Host map> click on your host
+	- tags appear on the bottom right
+		
+![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/UI_Datadog_tags.png)
 	
-Zookeeper Metrics
+<h2> Using Integrations </h2>
+
+<h4> Zookeeper Metrics </h4>
 
 Since the project runs a basic Apache server let's integrate Apache Zookeeper into the project. 
 
@@ -164,9 +185,27 @@ Since the project runs a basic Apache server let's integrate Apache Zookeeper in
 	<h3> If everything has the "OK" next to it then you're doing great! </h3>
 
 6. In the Datadog UI >  Infrasructure > Host Map > Click on your host
+	- Notice that "zookeeper" is now visible on your host
+	
 
-7. 
+
+![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/9c73283a27966899fd81ab8d36dbc8c1cbfa3bc2/pictures/Datadog_showTags.png)
+
+
+7. Click "zookeeper" and check out the metrics it is bringing into Datadog
+
+<br>
+<br>
+
+
+<h2> Now that Zookeeper is running, let's setup a monitor for it. </h2>
+
+- Since we set a timeout in Zookeeper, let's build a monitor around that.
+
+
+1. Go to Datadog UI > Monitors > New Monitor
 
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/9c73283a27966899fd81ab8d36dbc8c1cbfa3bc2/pictures/Zookeeper_Metrics.png)
 
+![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/Zookeeper_Email_Metrics.png)
 
