@@ -113,14 +113,14 @@ Installing Datadog Agent
 
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/9c73283a27966899fd81ab8d36dbc8c1cbfa3bc2/pictures/Datadog_Agent_Package.png)
 
-<h4>That's it! You've officially installed Datadog onto your Ubuntu server</h4>
+<h4>That's it! You've officially installed Datadog</h4>
 <br />
 
 
 <br />
 
 <h2>Adding tags</h2> 
-<a href="https://docs.datadoghq.com/tagging/#defining-tags">Information on Datadog Tags</a>
+<a href="https://docs.datadoghq.com/tagging/#defining-tags">Datadog Tags</a>
 
 In Your Terminal:
 
@@ -183,6 +183,7 @@ Since the project runs a basic Apache server let's integrate Apache Zookeeper in
 		$ sudo service datadog-agent status
 		
 	<h3> If everything has the "OK" next to it then you're doing great! </h3>
+	- If there is an "ERROR", check out this <a href="https://docs.datadoghq.com/integrations/zk/">link</a>
 
 6. In the Datadog UI >  Infrasructure > Host Map > Click on your host
 	- Notice that "zookeeper" is now visible on your host
@@ -209,3 +210,14 @@ Since the project runs a basic Apache server let's integrate Apache Zookeeper in
 
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/Zookeeper_Email_Metrics.png)
 
+
+- This monitor will send a warning when there are more than 2 timeouts and will send an alert when there are more than 5 timeouts.
+
+2. Notifications:
+	
+	- Email
+	![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/zookeeper_timeout_email.png)
+	
+	
+	- Event
+	![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/zookeeper_timeout_event.png)
