@@ -8,7 +8,7 @@ My Enviornment:
 
 Ubuntu Setup with Agent
 -----------------------
-1. Set yourself up for success:
+1. Set yourself up for success
 - Download Vagrant: https://www.vagrantup.com/
 - Download VirtualBox: https://www.virtualbox.org/
 - Signup for a Datadog account: https://www.datadoghq.com/ (There is a free two week trial) 
@@ -28,7 +28,7 @@ Ubuntu Setup with Agent
   This will create your Vagrantfile
     - More info on ubuntu/trusty64: https://app.vagrantup.com/ubuntu/boxes/trusty64
     
-5. In your text editor, [HOSTNAME]/Vagrantfile:
+5. Copy the code to [HOSTNAME]/Vagrantfile and place within your text editor
 
 		#COPY AND PASTE THIS CODE INTO YOUR FILE
 		
@@ -47,11 +47,11 @@ Ubuntu Setup with Agent
 		 
 			 end
 			 
-	*Feel free to setup your Vagrantfile however you please*
+	*Optional: Feel free to setup your Vagrantfile however you please*
 
  6. Save the file
 
- 7. Create a new file in your directory: [HOSTNAME]/bootstrap.sh
+ 7. Create a new file in your directory [HOSTNAME]/bootstrap.sh
 
 		#COPY AND PASTE THIS CODE INTO YOUR FILE
 		
@@ -74,7 +74,7 @@ Ubuntu Setup with Agent
 
 8. Save the file
  
-9. Open VirtualBox:
+9. Open VirtualBox
 
  - VirtualBox can be found in Applications or recent downloads
 
@@ -88,7 +88,7 @@ Back to the terminal:
 
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/VirtualBox_Running.png)
 
-11. SSH (Secure Shell) into a running Vagrant machine which will give you access to a shell.
+11. SSH (Secure Shell) into a running Vagrant machine which will give you access to a shell
 
  		$ vagrant ssh
 
@@ -106,7 +106,7 @@ Installing Datadog Agent
 ![](https://i.imgur.com/KLxQESW.gif)
 
 
-- Copy & Paste the DD_API_KEY into your terminal
+1. Copy & Paste the DD_API_KEY into your terminal
 
 
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/Datadog_Ubuntu_Install.png)
@@ -121,8 +121,9 @@ Installing Datadog Agent
 
 <br />
 
-<h2>Adding tags</h2> 
+<h2>Adding Tags</h2> 
 <a href="https://docs.datadoghq.com/tagging/#defining-tags">Datadog Tags</a>
+
 *Although tags will not be used in this project, it is a very important part of Datadog*
 
 - *Without the ability to assign and filter based on tags, finding problems in your environment and narrowing them down enough to discover the true causes could be difficult.*
@@ -140,9 +141,9 @@ In Your Terminal:
 
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/sudo_nano_datadog.png)
 
-3. Once you're in the file, scroll down to tags.
+3. Once you're in the file, scroll down to tags
 
-	- *Remember to remove the "#"*
+- *Remember to remove the "#"*
 
 (See photo below for example)
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/Datadog_workingTags.png)
@@ -155,8 +156,8 @@ In Your Terminal:
 	
 		$ sudo service datadog-agent restart
 		
-7. In the Datadog UI > Infrastructure > Host map> click on your host
-	- tags appear on the bottom right
+7. In the Datadog UI > Infrastructure > Host map > click on your host
+- tags appear on the bottom right
 		
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/UI_Datadog_tags.png)
 	
@@ -212,6 +213,8 @@ Since the project runs a basic Apache server let's integrate Apache Zookeeper in
 
 1. Go to Datadog UI > Monitors > New Monitor
 
+2. Setup the monitor as shown
+
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/9c73283a27966899fd81ab8d36dbc8c1cbfa3bc2/pictures/Zookeeper_Metrics.png)
 
 ![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/Zookeeper_Email_Metrics.png)
@@ -219,9 +222,8 @@ Since the project runs a basic Apache server let's integrate Apache Zookeeper in
 
 - This monitor will send a warning when there are more than 2 timeouts and will send an alert when there are more than 5 timeouts.
 
-2. Notifications:
-	
-	- Email
+3. Check notifications
+
 	![alt text](https://github.com/Perchitti/Perchitti_Lauren_SolutionsEngineer_031019/blob/master/pictures/zookeeper_timeout_email.png)
 	
 	
