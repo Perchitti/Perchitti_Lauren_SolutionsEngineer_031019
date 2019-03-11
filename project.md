@@ -1,5 +1,10 @@
 <h1>Part 1</h1>
 
+- I created a one page app that uses a linux VM in Vagrant & VirtualBox and installed the Datadog Ubuntu agent.
+- The project is running on a basic Apache server. I integrated Apache Zookeeper within the project.
+- Once the data for the timeouts started coming in, I set up a monitor that keeps track of each timeout. If the timeouts reach 2 or more, a warning is sent. If the the timeouts are more than 5, it sends an alarm.   
+
+
 <h2>Setting up Datadog 101</h2>
 
 My Environment:
