@@ -1,3 +1,5 @@
+<h1>Part 1</h1>
+
 <h2>Setting up Datadog 101</h2>
 
 My Enviornment:
@@ -121,6 +123,10 @@ Installing Datadog Agent
 
 <h2>Adding tags</h2> 
 <a href="https://docs.datadoghq.com/tagging/#defining-tags">Datadog Tags</a>
+*Although tags will not be used in this project, it is a very important part of Datadog*
+
+- *Without the ability to assign and filter based on tags, finding problems in your environment and narrowing them down enough to discover the true causes could be difficult.*
+
 
 In Your Terminal:
 
@@ -182,10 +188,10 @@ Since the project runs a basic Apache server let's integrate Apache Zookeeper in
 
 		$ sudo service datadog-agent status
 		
-	<h3> If everything has the "OK" next to it then you're doing great! </h3>
+	<h3> If everything has an "OK", then you're doing great! </h3>
 	- If there is an "ERROR", check out this <a href="https://docs.datadoghq.com/integrations/zk/">link</a>
 
-6. In the Datadog UI >  Infrasructure > Host Map > Click on your host
+6. In the Datadog UI >  Infrastructure > Host Map > Click on your host
 	- Notice that "zookeeper" is now visible on your host
 	
 
