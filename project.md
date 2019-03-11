@@ -2,7 +2,7 @@
 
 <h2>Setting up Datadog 101</h2>
 
-My Enviornment:
+My Environment:
 - OS: Ubuntu 16.04
 - VM: Vagrant w/ VirtualBox
 
